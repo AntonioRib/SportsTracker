@@ -1,0 +1,48 @@
+<div class="container" style="height:auto; width: auto; background-color: #dfe7f1">
+  <div class="container text-center" style="width: auto;">
+    <div class="login">
+      <div class="form-signin">
+        <%= form_for(@activity) do |f| %>
+            <% if @activity.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+
+                  <ul>
+                    <% @activity.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+            <% end %>
+            <h1 class="form-signin-heading">Activity</h1>
+              <%= f.text_field :name, :placeholder => "Name",  class: "ember-view ember-text-field form-control login-input" %>
+                <br />
+              <%= f.label :date %><br />
+              <%= f.datetime_select :date,  class: "ember-view ember-text-field form-control" %>
+            <br />
+            <br />
+                <b>GPX file</b>
+                <%= f.file_field :points %>
+            <br />
+            <br />
+              <b>Duration</b>
+            <br />
+              <%= number_field_tag 'duration',  class: "ember-view ember-text-field form-control" %>
+            <br />
+            <br />
+              <%= f.label :place_id %><br>
+              <%= f.select :place_id, options_from_collection_for_select(Place.all, :id, :name),  class: "ember-view ember-text-field form-control" %>
+            <br />
+            <br />
+              <%= f.label :sport_id %><br>
+              <%= f.select :sport_id, options_from_collection_for_select(Sport.all, :id, :name),  class: "ember-view ember-text-field form-control" %>
+            <br />
+            <br />
+              <%= f.submit %>
+        <% end %>
+        <br />
+        <%= link_to 'Back', list_user_activities_path %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="container" style="height:100%; width: auto; background-color: #dfe7f1">
+  <div class="container text-center" style="width: auto;">
+    <div class="login">
+      <div class="form-signin">
+        <h1>Users</h1>
+    </div>
+          <% @users.each do |user| %>
+            <div class="userBox">
+              <img src="http://www.readyforce.com/static/images/reboot/generic_user_image.png" class="userImg">
+
+              <h3 class="userName"><%= user.name %></h3>
+              <em><%= user.email %></em>
+
+              <br>
+
+              <% if user.birth_date.nil? %>
+                  <em>Unspecified birth date</em>
+              <% else %>
+                  <em><%= user.birth_date %></em>
+              <% end %>
+
+              <br>
+
+              <% if user.gender == '' || user.gender.nil? %>
+                  <em>Unspecified gender</em>
+              <% else %>
+                  <em><%= user.gender %></em>
+              <% end %>
+              <br>
+              <% if current_user.friends.joins(:friendships).where("friendships.status = 'accepted'").find_by(id: user.id).present? %>
+                  <p class="button_table_reject">
+                    <%= link_to 'Unfriend', Friendship.find_by(user_id: current_user.id, friend_id: user.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+                  </p>
+              <% elsif current_user.friends.joins(:friendships).where("friendships.status = 'pending'").find_by(id: user.id).present? %>
+                  <p class="button_table_reject">
+                    <%= link_to 'Cancel pending request', Friendship.find_by(user_id: current_user.id, friend_id: user.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+                  </p>
+              <% elsif current_user.friends.joins(:friendships).where("friendships.status = 'requested'").find_by(id: user.id).present? %>
+                  <p class="button_table_accept">
+                    <%= link_to 'Accept friendship request', :controller => :friendships, :action => :accept, :id => current_user.id, :friend => user.id %>
+                  </p>
+                  <p class="button_table_reject">
+                    <%= link_to 'Reject friendship request', Friendship.find_by(user_id: current_user.id, friend_id: user.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+                  </p>
+              <% else %>
+                  <p class="button_table_accept">
+                    <%= link_to 'Add as friend', :controller => :friendships, :action => :add_friend, :id => current_user.id, :friend => user.id %>
+                  </p>
+              <% end %>
+            </div>
+          <% end %>
+    </div>
+  </div>
+</div>

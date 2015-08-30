@@ -1,0 +1,336 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require bootstrap.min
+ *= require_tree .
+ *= require_self
+ */
+
+#map-canvas {
+    height: 300px;
+    width: 95%;
+    margin: 5px auto;
+    box-shadow: 0px 0px 10px black;
+    padding: 5px;
+    border: 1px #337ab7 solid;
+}
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+ }
+
+.container {
+    width: 100%;
+}
+
+body,html{
+    background: #77ddc4; /* Old browsers */
+    height:100%;
+    width:100%;
+    font-family: 'Exo 2', sans-serif;
+    background: url('');
+    background-position:center center;
+
+}
+.sidebar{
+    width:20%;
+    height:100%;
+    background: #4D585E;
+    box-shadow:1px 0px 10px rgba(0,0,0,.4);
+    float:left;
+    background-repeat: no-repeat;
+    background-position:bottom center;
+    background-position-x: center;
+    background-position-y: 97%;
+    background-size: 40%;
+    overflow-y:hidden;
+    z-index:10;
+}
+.toggleSidebar{
+    background:#4D585E;
+    padding:.8em;
+    color:#fff;
+    position:absolute;
+    left:0;
+    box-shadow:1px 0px 10px rgba(0,0,0,.4);
+    top:10px;
+    z-index:20;
+}
+
+.toggleSidebar:hover{
+    color:#ccc;
+}
+.sidebar .title{
+    margin:.7em;
+    color:#83AFC7;
+    font-weight:200;
+}
+.sidebar ul{
+    padding:0;
+    margin:1em;
+    margin-top:0;
+    max-height:700px;
+    overflow-y:auto;
+}
+.sidebar ul li{
+    list-style-type:none;
+    padding:.4em;
+}
+.sidebar ul li a{
+    width:100%;
+    height:100%;
+    color:#fff;
+}
+.sidebar ul li ul{
+    margin:0;
+    height:0;
+    overflow:hidden;
+    transition:height .5s ease-in-out;
+    -o-transition:height .5s ease-in-out;
+    -moz-transition:height .5s ease-in-out;
+    -webkit-transition:height .5s ease-in-out;
+}
+.sidebar ul li ul li a{
+    color:#999;
+}
+.heightlock{
+    height:80%;
+    overflow-y:auto;
+}
+.right{
+    float:right;
+}
+.white{
+    color:#fff;
+    font-size:10pt;
+}
+
+.screenestate{
+    height:100%;
+    padding:0em;
+    width:80%;
+    float:right;
+    position:relative;
+    overflow:scroll;
+}
+
+.notice {
+
+}
+
+
+.form-signin{
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+
+.login-input {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.login-input-pass {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+
+.signup-input {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.signup-input-confirm {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+
+
+.create-account {
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+.form-signin .form-control {
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.btn-center{
+    width: 50%;
+    text-align: center;
+    margin: inherit;
+}
+
+.social-login-btn {
+    margin: 5px;
+    width: 20%;
+    font-size: 250%;
+    padding: 0;
+}
+
+.social-login-more {
+    width: 45%;
+}
+
+.social-google {
+    background-color: #da573b;
+    border-color: #be5238;
+}
+.social-google:hover{
+    background-color: #be5238;
+    border-color: #9b4631;
+}
+
+.social-facebook {
+    background-color: #4c699e;
+    border-color: #47618d;
+}
+.social-facebook:hover {
+    background-color: #47618d;
+    border-color: #3c5173;
+}
+
+.field_with_errors {
+    display: block;
+    background-color: #FF9999;
+}
+
+#error_explanation h2 {
+    background-color: indianred;
+    margin-bottom: 2px;
+}
+
+#error_explanation {
+    margin-left: -25%;
+    border: 0px;
+    text-align: left;
+}
+
+.userBox{
+    display: inline-block;
+    background-color: white;
+    padding: 5px;
+    max-width: 250px;
+    overflow: hidden;
+    border: 1px solid #e0dff1;
+}
+
+.userName{
+    border-bottom: 1px solid #bebebe;
+}
+
+.userImg{
+    border: 1px solid #e0dff1;
+}
+/*
+ .yield {
+    position: absolute;
+     top: 40px;
+     left: 0px;
+     width: 100%;
+ }
+
+ .user_nav{
+	border-bottom:1px solid indianred;
+    background-color:whitesmoke;
+    padding:20px 0px 10px 0px;
+	margin-top: -10px;
+    margin-left: -10px;
+    z-index:2000;
+    width:100.5%;
+    position: fixed;
+    top: 0px;
+ }
+ .nav_bar{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+ }
+
+ .nav_bar li{
+ 	display: block;
+    width: auto;
+    font-weight: bold;
+    color: indianred;
+    text-align: center;
+    padding: 3px 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+ }
+
+.nav_bar_right{
+	float: right;
+ }
+
+.nav_bar_left{
+	float: left;
+ }
+
+ .nav_bar li a {
+	color: indianred;
+ }
+
+
+.user_foot{
+    border-top:1px solid indianred;
+    background-color:whitesmoke;
+    margin-top: 10px;
+    margin-left: -10px;
+    z-index:2000;
+    width:100.5%;
+    position: fixed;
+    bottom: 0px;
+}
+.foot_bar{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.foot_bar li{
+    display: block;
+    width: auto;
+    font-weight: bold;
+    color: indianred;
+    text-align: center;
+    padding: 3px 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.foot_bar_right{
+    float: right;
+}
+
+.foot_bar_left{
+    float: left;
+}
+
+.foot_bar li a {
+    color: white;
+}
+*/

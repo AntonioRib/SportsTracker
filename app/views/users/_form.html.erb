@@ -1,0 +1,46 @@
+<div class="container" style="height:100%; width: auto; background-color: #dfe7f1">
+  <div class="container text-center" style="width: auto;">
+    <div class="login">
+      <div class="form-signin">
+        <%= form_for(@user) do |f| %>
+            <% if @user.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+                  <ul>
+                    <% @user.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+            <% end %>
+            <h1>Editing User</h1>
+
+            <%= f.text_field :name, :placeholder => "Name" %>
+            <br />
+            <br />
+            <%= f.label :birth_date %><br>
+            <%= f.date_field :birth_date %>
+            <br />
+            <%= f.label :gender %><br>
+            <%= f.radio_button :gender, 'Male', checked: true %>
+            <%= f.label 'Male' %>
+            <%= f.radio_button :gender, 'Female' %>
+            <%= f.label 'Female' %>
+            <%= f.radio_button :gender, '' %>
+            <%= f.label 'Not specified' %>
+            <br />
+            <%= f.text_field :weight , :placeholder => "Weight" %> kg
+            <br />
+            <br />
+            <%= f.text_field :height , :placeholder => "Height" %> m
+            <br /><br />
+            <%= f.submit %>
+        <% end %>
+        <div class="registry_options">
+          <%= link_to 'Back', root_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

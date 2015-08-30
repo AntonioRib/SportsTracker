@@ -1,0 +1,94 @@
+<div class="blurb alt vert" style="background-color: #d46054">
+  <div class="container">
+    <div class="col-md-7" style="margin-bottom: 10px;">
+      <h1>
+        <% if @nextActivity.nil? %>
+            You have no future activities!
+        <% else %>
+            <%= @nextActivity.name %> on <%= @nextActivity.date %> at <%= @nextActivity.location %>
+        <% end %>
+      </h1>
+      <div>&nbsp;</div>
+      <a href ="list_user_activities" class="btn btn-default btn-lg">Check your activities now</a>
+    </div>
+    <div class="col-md-5 calendar">
+      <%= calendar do |date| %>
+        <%= date.day %>
+        <% @userActivities.all.each do |act| %>
+          <% if date == act.date.to_date %>
+            <%= link_to '*', act, target: '_self' %>
+            <% break %>
+          <% end %>
+        <% end %>
+      <% end %>
+     </div>
+    </div>
+  </div>
+<div class="blurb vert" style="background-color: cornflowerblue;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href ="list_user_friends" class="btn btn-default btn-lg"><h1>Friends</h1></a>
+        <p></p>
+        <p class="lead">
+          Your newest friend is:
+          <br/>
+          <% if @newestFriend.nil? %>
+              You have no friends yet!
+          <% else %>
+              <%= @newestFriend.name %> at <%= @newestFriend.email %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="blurb">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-7">
+        <h1 class="pull-left">The latest place you've been</h1>
+        <p class="lead pull-left">
+          <% if @lastVisit.nil? %>
+              You haven't visited any place yet!
+          <% else %>
+              <%= @lastVisit.location %> on <%= @lastVisit.last_date.to_date %>
+          <% end %>
+          |<a href ="places" target="_self"> Check more</a>
+        </p>
+      </div>
+      <div class="col-md-5">
+        <h1><i class="icon-plane icon-3x"></i></h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="blurb" style="background-color: #CCCCFF;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <h1><i class="icon-plane icon-3x"></i></h1>
+      </div>
+      <div class="col-md-7">
+        <h1 class="pull-right">Compete against your friends</h1>
+        <p class="lead pull-right">
+
+          <% if @mostPopularSport.nil? %>
+              <% if @newestFriend.nil? %>
+                  You have no friends yet!
+              <% else %>
+                  Your friends haven't done any activities!
+              <% end %>
+          <% else %>
+              Your friends prefer <%= @mostPopularSport.name %>
+          <% end %>
+          |<a href ="sports"> Check more</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+

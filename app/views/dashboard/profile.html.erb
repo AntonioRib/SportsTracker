@@ -1,0 +1,127 @@
+<link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet" media="screen">
+<div class="container" style="height:100%; width: auto; background-color: #dfe7f1">
+  <div class="container text-center" style="width: auto;">
+    <div class="row user-menu-container square">
+      <div class="col-md-7 user-details">
+        <div class="row coralbg white">
+          <div class="col-md-6 no-pad">
+            <div class="user-pad">
+              <h3>Hello <%= @user.name %></h3>
+              <h4 class="white"><i class="fa fa-check-circle-o"></i><%= @user.email %></h4>
+              <%= link_to edit_user_path(@user) do %><button type="button" class="btn btn-labeled btn-info" href="#">
+                  <span class="btn-label"><i class="fa fa-pencil"></i></span>Edit</button>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-md-6 no-pad">
+            <div class="user-image">
+              <img src="http://www.readyforce.com/static/images/reboot/generic_user_image.png" class="img-responsive thumbnail">
+            </div>
+          </div>
+        </div>
+        <div class="row overview">
+          <div class="col-md-4 user-pad text-center">
+            <h3>ACTIVITIES</h3>
+            <h4><%= @nActivities %></h4>
+          </div>
+          <div class="col-md-4 user-pad text-center">
+            <h3>FRIENDS</h3>
+            <h4><%= @nFriends %></h4>
+          </div>
+          <div class="col-md-4 user-pad text-center">
+            <h3>TEAMS</h3>
+            <h4><%= @nTeams %></h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1 user-menu-btns">
+        <div class="btn-group-vertical square" id="responsive">
+          <a href="#" class="btn btn-default active">
+            <i class="fa fa-laptop fa-3x"></i>
+          </a>
+          <a href="#" class="btn btn-block btn-default">
+            <i class="fa  fa-anchor fa-3x"></i>
+          </a>
+          <a href="#" class="btn btn-default">
+            <i class="fa fa-user fa-3x"></i>
+          </a>
+          <a href="#" class="btn btn-default">
+            <i class="fa fa-gears (alias) fa-3x"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4 user-menu user-pad">
+        <div class="user-menu-content active">
+          <h3>
+            Details
+          </h3>
+          <br />
+          <% if @user.gender == '' || @user.gender.nil? %>
+              <h4>Unspecified gender</h4>
+          <% else %>
+              <h4><%= @user.gender %></h4>
+          <% end %>
+          <br />
+          <% if @user.weight.nil? %>
+              <h4>Unspecified weight</h4>
+          <% else %>
+              <h4><%= @user.weight %> kg</h4>
+          <% end %>
+          <br />
+          <% if @user.height.nil? %>
+              <h4>Unspecified height</h4>
+          <% else %>
+              <h4><%= @user.height %> m</h4>
+          <% end %>
+          <br />
+
+        </div>
+        <div class="user-menu-content">
+          <h3>
+            Places been
+          </h3>
+          <ul class="user-menu-list">
+            <% if @activities.length > 0 %>
+                <% @activities.each do |activity| %>
+                    <h4><li><%= activity.place_name %> on <%= activity.date.to_date %></li></h4>
+                <% end %>
+            <% else %>
+                <h4><li>You haven't been to any places</li></h4>
+            <% end %>
+          </ul>
+        </div>
+        <div class="user-menu-content">
+          <h3>
+            Friends
+          </h3>
+          <ul class="user-menu-list">
+            <% if @trueFriends.length > 0 %>
+                <% @trueFriends.each do |friend| %>
+                    <li> <h4><%= friend.name %></h4> </li>
+                <% end %>
+            <% else %>
+                <li> <h4>You have no friends</h4> </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="user-menu-content">
+          <h3>
+            Teams
+          </h3>
+          <ul class="user-menu-list">
+            <% if @teams.length > 0 %>
+                <% @teams.each do |team| %>
+                    <li><h4><%= team.name %> </h4></li>
+                <% end %>
+            <% else %>
+                <li><h4>You have no teams </h4></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>

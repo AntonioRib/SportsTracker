@@ -1,0 +1,44 @@
+<div class="container" style="height:100%; width: auto; background-color: #dfe7f1">
+  <div class="container text-center" style="width: auto;">
+    <h1>Activities</h1>
+
+    <% @activities.each do |activity| %>
+        <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+          <ul class="event-list">
+            <li>
+              <time>
+                <span class="day"><%= activity.date.to_date.day %></span>
+                <span class="month"><%= activity.date.to_date.strftime("%b")%></span>
+              </time>
+              <div class="info">
+                <h2 class="title"><%= link_to activity.name, activity, target: '_self'%></h2>
+                <p class="desc"><%= activity.place_name %></p>
+                <p class="desc" style="font-size: 0.9em;"><%= activity.sport_name %></p>
+                <br>
+                <% unless activity.owner_id == @current.id %>
+                    <div style="text-align: right">
+                        <span class="desc" style="font-size: 0.8em;">
+                          <em>Shared | </em>
+                        </span>
+                        <span class="desc" style="text-align: right; font-size: 0.8em;">
+                          <%= link_to "I won't go to this activity", activity, method: :delete, data: { confirm: 'Are you sure?' } %>
+                        </span>
+                    </div>
+                <% else %>
+                    <div style="text-align: right" >
+                        <span class="desc" style="text-align: right; font-size: 0.8em;">
+                          <%= link_to raw('<span class="glyphicon glyphicon-pencil"></span> |') , edit_activity_path(activity) %>
+                          <%= link_to 'Delete', activity, method: :delete, data: { confirm: 'Are you sure?' } %>
+                        </span>
+                    </div>
+                <% end %>
+              </div>
+            </li>
+          </ul>
+        </div>
+    <% end %>
+    <!-- <div style="clear: both"> -->
+    <%= link_to '| New Activity |', new_activity_path %><%= link_to ' Back |', root_path%>
+    <!--</div>-->
+  </div>
+</div>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  duration: 1
+  date: 2014-11-11
+  place_id: 1
+  sport_id: 1
+
+two:
+  name: MyString
+  duration: 1
+  date: 2014-11-11
+  place_id: 1
+  sport_id: 1

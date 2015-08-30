@@ -1,0 +1,31 @@
+<div class="container" style="width: auto;">
+  <div class="container text-center" style="width: auto;">
+    <div class="login">
+      <div class="form-signin">
+        <h2 class="form-signin-heading">Sign in</h2>
+
+        <small class="text-muted">Connect to SportsTracker with your favorite social network</small>
+        <br><br>
+        <p>
+          <a class="btn btn-primary social-login-btn social-facebook" href="/auth/facebook"><i class="fa fa-facebook"></i></a>
+          <a class="btn btn-primary social-login-btn social-google" href="/auth/google"><i class="fa fa-google-plus"></i></a>
+        </p>
+        <br><br>
+        <small class="text-muted">Or sign in with a SportsTracker Account</small>
+        <br><br>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= f.email_field :email, autofocus: true, :placeholder => "Email", class: "ember-view ember-text-field form-control login-input" %>
+            <%= f.password_field :password, autocomplete: "off", :placeholder => "Password", class: "ember-view ember-text-field form-control login-input-pass" %>
+            <% if devise_mapping.rememberable? -%>
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+            <% end -%>
+            <%= f.submit "Log in", class: "btn btn-lg btn-primary btn-block btn-center" %>
+        <% end %>
+        <div class="login_options">
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

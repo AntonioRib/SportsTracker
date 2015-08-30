@@ -1,0 +1,59 @@
+
+<div class="container" style="height:100%; width: auto; background-color: #dfe7f1">
+  <div class="container text-center" style="width: auto;">
+    <h1>Leaderboard</h1>
+    <div class="row">
+      <div class="table table-striped table-bordered table-condensed table-hover span6" style="width: 375px; margin: 0px auto; float: left">
+    <h1>By Duration</h1>
+    <table>
+      <thead>
+      <tr>
+        <th style="width: 125px; text-align: center;">Rank</th>
+        <th style="width: 125px;  text-align: center;">Name</th>
+        <th style="width: 125px;  text-align: center;">Duration</th>
+        <th colspan="3"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @i = 0 %>
+      <% @leadersDuration.each do |leader| %>
+          <tr>
+            <td style="width: 135px; text-align: center;"><%= @i = @i +1 %></td>
+            <td style="width: 135px; text-align: center;"><%= leader.name %></td>
+            <td style="width: 135px; text-align: center;"><%= leader.total_duration %> min.</td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+      </div>
+
+      <div class="table table-striped table-bordered table-condensed table-hover span6" style="width: 375px; margin: 0px auto; float: right;">
+    <h1>By Frequency</h1>
+    <table>
+      <thead>
+      <tr>
+        <th style="width: 125px; text-align: center;">Rank</th>
+        <th style="width: 125px; text-align: center;">Name</th>
+        <th style="width: 125px; text-align: center;">Frequency</th>
+        <th colspan="3"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @i = 0 %>
+      <% @leadersFrequency.each do |leader| %>
+          <tr>
+            <td style="width: 125px; text-align: center;"><%= @i = @i +1 %></td>
+            <td style="width: 125px; text-align: center;"><%= leader.name %></td>
+            <td style="width: 125px; text-align: center;"><%= leader.frequency %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    </div>
+    <br />
+      </div>
+    <div class="options">
+      <%= link_to 'Back', '/sports' %>
+    </div>
+  </div>
+</div>

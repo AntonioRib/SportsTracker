@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<div class="jtron">
+  <div class="container">
+    <div class="form">
+      <h1>Sports practiced by friends in <%= @place.name %></h1>
+      <table>
+        <thead>
+        <tr>
+          <th>Sport</th>
+          <th>Friend</th>
+          <th>Email</th>
+          <th colspan="3"></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @sports.each do |sport| %>
+            <tr>
+              <td><%= sport.sport_name %></td>
+              <td><%= sport.user_name %></td>
+              <td><%= sport.user_email %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <div class="form_options">
+        <%= link_to 'Back', '/places' %>
+      </div>
+    </div>
+  </div>
+</div>

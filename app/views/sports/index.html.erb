@@ -1,0 +1,15 @@
+<div class="container" style="height:auto; width: auto; background-color: #f1e0df">
+  <div class="container text-center" style="width: auto;">
+    <div class="login">
+      <div class="form-signin">
+        <ul class="list-group">
+          <h1>Sports</h1>
+          <% @sports.each do |sport| %>
+              <li class=list-group-item><%= link_to sport.name, :controller => :dashboard, :action => :leaderboard, :id => sport.id %></li>
+          <% end %>
+        </ul>
+        <%= link_to 'Back', root_path %>
+      </div>
+    </div>
+  </div>
+</div>
